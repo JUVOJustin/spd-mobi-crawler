@@ -1,5 +1,5 @@
 # SPD Mobilisierungsplaner Crawler
-Erhalte die Rohdaten des SPD Mobiliseungsplaners für detaillierte Auswertungen zu den einzelnen Straßenzügen. Um die Daten zu erhalten muss dein SPD Account als "Campaigner" freigeschaltet sein. Eine Fehlerbehandlung ist wenig bis gar nicht vorhanden. Im Zweifel einfach einen Issue erstellen ;)
+Erhalte die Rohdaten des SPD Mobilisierungsplaners für detaillierte Auswertungen. Um die Daten zu erhalten muss dein SPD Account als "Campaigner" freigeschaltet sein. Eine Fehlerbehandlung ist wenig bis gar nicht vorhanden. Im Zweifel einfach einen Issue erstellen ;)
 
 ## Konfiguration
 | Parameter | Type | Description
@@ -13,7 +13,7 @@ Erhalte die Rohdaten des SPD Mobiliseungsplaners für detaillierte Auswertungen 
 - Sicherstellen das PHP 7.4 installiert und lauffähig ist
 - Download ZIP Ordner mit Code [Download](https://github.com/JUVOJustin/spd-mobi-crawler/archive/refs/heads/main.zip)
 - Entpacken
-- 'Composer update' ausführen zur Installation der Abhängigkeiten
+- `Composer update` ausführen zur Installation der Abhängigkeiten
 
 ## Benutzung
 ```php spd.php user@tld.com secretpassword type wk_key```
