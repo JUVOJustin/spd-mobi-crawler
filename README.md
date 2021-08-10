@@ -13,7 +13,7 @@ Erhalte die Rohdaten des SPD Mobiliseungsplaners für detaillierte Auswertungen 
 - Sicherstellen das PHP 7.4 installiert und lauffähig ist
 - Download ZIP Ordner mit Code [Download](https://github.com/JUVOJustin/spd-mobi-crawler/archive/refs/heads/main.zip)
 - Entpacken
-- 'Composer update' ausführen zur Installation der Abhängigkeiten
+- `Composer update` ausführen zur Installation der Abhängigkeiten
 
 ## Benutzung
 ```php spd.php user@tld.com secretpassword type wk_key```
