@@ -138,9 +138,25 @@ $file = fopen("structuredData_{$type}_wk_{$wkKey}.csv", 'w');
 
 // Get "zielgruppen" names as headings
 $zielgruppen = array_keys((array)$json->data->geoJson->features[0]->properties->zielgruppen);
+foreach($zielgruppen as $key => $zielgruppe) {
+    $zielgruppen[$key] = str_replace(" ", "_", $zielgruppe) . "_Index";
+}
 
 // Set Headings merges with zielgruppen
-fputcsv($file, array_merge(array('Gemeinde', 'Schlüssel', 'MobIndex'), $zielgruppen));
+fputcsv($file, array_merge(array('Gemeinde', 'Schlüssel', 'MobIndex'), $zielgruppen, [
+    "Haushalte",
+    "Haushalte zur Miete",
+    "Haushalte mit Kindern",
+    "Einwohne",
+    "Rentner_innen",
+    "Erwerbstätige",
+    "Erwerbstätigenquote",
+    "Kaufkraft pro Einwohner",
+    "Migrationshintergrund",
+    "Erstwähler_innen",
+    "Auszubildende",
+    "Studierende",
+]));
 
 // Iterate features
 foreach ($json->data->geoJson->features as $feature) {
@@ -153,7 +169,24 @@ foreach ($json->data->geoJson->features as $feature) {
     $zielgruppen = array_values((array)$feature->properties->zielgruppen);
 
     // save the column headers
-    fputcsv($file, array_merge(array($gemeinde, $feature->properties->key, $feature->mob_class), $zielgruppen));
+    fputcsv($file, array_merge([
+        $gemeinde,
+        $feature->properties->key,
+        $feature->mob_class
+    ], $zielgruppen, [
+        str_replace("Haushalte: ", "", $feature->properties->infos[1]),
+        str_replace("Haushalte zur Miete: ", "", $feature->properties->infos[2]),
+        str_replace("Haushalte mit Kindern: ", "", $feature->properties->infos[3]),
+        str_replace("Einwohner: ", "", $feature->properties->infos[4]),
+        str_replace("Rentner_innen: ", "", $feature->properties->infos[5]),
+        str_replace("Erwerbstätige: ", "", $feature->properties->infos[6]),
+        str_replace("Erwerbstätigenquote: ", "", $feature->properties->infos[7]),
+        str_replace("Erwerbstätigenquote: ", "", $feature->properties->infos[8]),
+        str_replace("Kaufkraft pro Einwohner: ", "", $feature->properties->infos[9]),
+        str_replace("Erstwähler_innen: ", "", $feature->properties->infos[10]),
+        str_replace("Auszubildende: ", "", $feature->properties->infos[11]),
+        str_replace("Studierende: ", "", $feature->properties->infos[12]),
+    ]));
 }
 
 // Close the file
